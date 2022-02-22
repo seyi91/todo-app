@@ -7,7 +7,7 @@ const results = document.querySelector('#results');
 const savedTasks = JSON.parse(localStorage.getItem("results")) || [];
 for (let i=0; i < savedTasks.length; i++) {
     let newTask = document.createElement("li");
-    newTask.innerText = savedTasksgit[i].task;
+    newTask.innerText = savedTasks[i].task;
     results.appendChild(newTask);
 }
 
