@@ -3,6 +3,14 @@ const taskInput = document.querySelector('#task')
 const deadline = document.querySelector('#deadline');
 const results = document.querySelector('#results');
 
+//local storage
+const savedTasks = JSON.parse(localStorage.getItem("results")) || [];
+for (let i=0; i < savedTasks.length; i++) {
+    let newTask = document.createElement("li");
+    newTask.innerText = savedTasksgit[i].task;
+    results.appendChild(newTask);
+}
+
 results.addEventListener('click', (e) => {
     const lowercaseTagName = e.target.tagName.toLowerCase();
     if (lowercaseTagName === "input") {
@@ -36,6 +44,10 @@ taskForm.addEventListener("submit", (e) => {
     
     //Add the newly created task list item to the unordered list
     results.append(newTask);
+    savedTasks.push({task: newTask.innerText});
+    localStorage.setItem("results", JSON.stringify(savedTasks));
 })
+
+
 
 
